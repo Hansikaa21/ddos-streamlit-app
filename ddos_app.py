@@ -15,10 +15,10 @@ st.set_page_config(page_title="DDoS Attack Classifier", layout="wide")
 
 # -------------------- Sidebar Navigation --------------------
 st.sidebar.title("🔍 Navigation")
-menu = st.sidebar.radio("Go to", [" Home", "📊 DDoS Classification", "📈 Model Insights"])
+menu = st.sidebar.radio("Go to", [" Home", "DDoS Classification", "Model Insights"])
 
 # -------------------- Home Page --------------------
-if menu == "🏠 Home":
+if menu == "Home":
     st.title("💻 DDoS Attack Classification Web App")
     st.write("""
     This application classifies network traffic as **Benign** or a type of **DDoS attack**
@@ -32,11 +32,11 @@ if menu == "🏠 Home":
     - Predict attack types interactively  
     """)
     st.image("https://miro.medium.com/v2/resize:fit:1200/1*2QZ8kJDG7Yvfs7bQPL4OBQ.png", caption="DDoS Attack Concept", use_container_width=True)
-    st.markdown("### ⚙️ Navigate to the 'DDoS Classification' tab to start →")
+    st.markdown("### Navigate to the 'DDoS Classification' tab to start →")
 
 # -------------------- DDoS Classification --------------------
-elif menu == "📊 DDoS Classification":
-    st.title("📊 DDoS Attack Classification")
+elif menu == "DDoS Classification":
+    st.title("DDoS Attack Classification")
 
     # Upload CSV
     uploaded_file = st.file_uploader("C:\Users\Hansika\OneDrive\Documents\rinnyy\Projects\ddos-streamlit-app\sample_ddos_dataset.csv", type=["csv"])
@@ -52,7 +52,7 @@ elif menu == "📊 DDoS Classification":
         df = df.dropna()
 
         # Class Distribution
-        st.subheader("📊 Class Distribution")
+        st.subheader("Class Distribution")
         st.bar_chart(df.iloc[:, -1].value_counts())
 
         # Select features and labels
@@ -84,7 +84,7 @@ elif menu == "📊 DDoS Classification":
         st.dataframe(pd.DataFrame(report).transpose())
 
         # Confusion Matrix
-        st.subheader("📉 Confusion Matrix")
+        st.subheader("Confusion Matrix")
         cm = confusion_matrix(y_test, y_pred)
         fig, ax = plt.subplots()
         sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=ax)
@@ -117,7 +117,7 @@ elif menu == "📈 Model Insights":
     Upload the same dataset used for training to visualize the feature importance graph.
     """)
 
-    uploaded_file = st.file_uploader("📂 Upload Dataset for Feature Importance", type=["csv"], key="insights")
+    uploaded_file = st.file_uploader("Upload Dataset for Feature Importance", type=["csv"], key="insights")
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
