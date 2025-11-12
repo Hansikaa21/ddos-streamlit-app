@@ -101,7 +101,7 @@ elif menu == "DDoS Classification":
             val = st.number_input(f"{col}", float(df[col].min()), float(df[col].max()), float(df[col].mean()))
             input_data.append(val)
 
-        if st.button("🚀 Predict DDoS Attack Type"):
+        if st.button("Predict DDoS Attack Type"):
             prediction = model.predict([input_data])
             st.success(f"**Predicted Attack Type:** {prediction[0]}")
 
