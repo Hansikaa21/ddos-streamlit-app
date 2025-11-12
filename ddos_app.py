@@ -19,7 +19,7 @@ menu = st.sidebar.radio("Go to", [" Home", "DDoS Classification", "Model Insight
 
 # -------------------- Home Page --------------------
 if menu == "Home":
-    st.title("💻 DDoS Attack Classification Web App")
+    st.title("DDoS Attack Classification Web App")
     st.write("""
     This application classifies network traffic as **Benign** or a type of **DDoS attack**
     using a Random Forest machine learning model.
@@ -45,7 +45,7 @@ elif menu == "DDoS Classification":
         df = pd.read_csv(uploaded_file)
 
         # Data Preview
-        st.subheader("📄 Dataset Preview")
+        st.subheader("Dataset Preview")
         st.dataframe(df.head())
 
         # Handle missing values
@@ -78,7 +78,7 @@ elif menu == "DDoS Classification":
         report = classification_report(y_test, y_pred, output_dict=True)
 
         # Display metrics
-        st.subheader("⚙️ Model Performance")
+        st.subheader("Model Performance")
         st.metric("Model Accuracy", f"{accuracy * 100:.2f}%")
         st.text("Classification Report:")
         st.dataframe(pd.DataFrame(report).transpose())
@@ -93,7 +93,7 @@ elif menu == "DDoS Classification":
         st.pyplot(fig)
 
         # -------------------- Prediction Section --------------------
-        st.subheader("🔮 Make a New Prediction")
+        st.subheader("Make a New Prediction")
 
         input_data = []
         st.write("Enter the following feature values:")
@@ -106,11 +106,11 @@ elif menu == "DDoS Classification":
             st.success(f"**Predicted Attack Type:** {prediction[0]}")
 
     else:
-        st.info("👆 Please upload a CSV file to begin classification.")
+        st.info("Please upload a CSV file to begin classification.")
 
 # -------------------- Model Insights --------------------
-elif menu == "📈 Model Insights":
-    st.title("📈 Feature Importance Visualization")
+elif menu == "Model Insights":
+    st.title("Feature Importance Visualization")
 
     st.write("""
     This section shows which features contribute the most to the model’s decisions.
